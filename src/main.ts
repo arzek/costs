@@ -45,13 +45,13 @@ async function bootstrap() {
     for (const [index, item] of result.entries()) {
       const idr = item.count * 1000;
 
-      reply += `${index + 1}. ${capitalizeFirstLetter(
-        item._id,
-      )}: ${idr} IDR/ ${idr2usd(idr)} USD / ${idr2uah(idr)} грн. \n`;
+      reply += `${index + 1}. ${capitalizeFirstLetter(item._id)}: ${printIDR(
+        idr,
+      )} IDR/ ${idr2usd(idr)} USD / ${idr2uah(idr)} грн. \n`;
       allCosts += idr;
     }
 
-    reply += `\n Всього витрачено: ${allCosts} IDR/ ${idr2usd(
+    reply += `\n Всього витрачено: ${printIDR(allCosts)} IDR/ ${idr2usd(
       allCosts,
     )} USD / ${idr2uah(allCosts)} грн.`;
     ctx.reply(reply);
@@ -65,6 +65,10 @@ async function bootstrap() {
 
   function idr2uah(idr: number): string {
     return (idr * idr2usdRate * usd2uahRate).toFixed(2);
+  }
+
+  function printIDR(idr: number): string {
+    return idr / 1000 + 'k';
   }
 
   function capitalizeFirstLetter(string: string) {
