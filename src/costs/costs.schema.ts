@@ -13,6 +13,12 @@ export class Cost {
 
   @Prop()
   date: Date;
+
+  @Prop()
+  month: number;
+
+  @Prop()
+  year: number;
 }
 
 export const CostsSchema = SchemaFactory.createForClass(Cost);
