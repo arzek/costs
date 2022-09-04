@@ -42,12 +42,12 @@ async function bootstrap() {
     let reply = 'Успішно додано! Статистика за місяць: \n\n';
 
     let allCosts = 0;
-    for (const item of result) {
+    for (const [index, item] of result.entries()) {
       const idr = item.count * 1000;
 
-      reply += `${item._id} ${idr} IDR/ ${idr2usd(idr)} USD / ${idr2uah(
+      reply += `${index + 1}. ${item._id} ${idr}: IDR/ ${idr2usd(
         idr,
-      )} грн. \n`;
+      )} USD / ${idr2uah(idr)} грн. \n`;
       allCosts += idr;
     }
 
