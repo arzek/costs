@@ -7,7 +7,7 @@ import { BotService } from './bot/bot.service';
 import { ConverterService } from './currency/converter.service';
 
 async function bootstrap() {
-  const app = await NestFactory.createApplicationContext(AppModule);
+  const app = await NestFactory.create(AppModule);
   const configService = await app.get<ConfigService>(ConfigService);
   const botService = await app.get<BotService>(BotService);
   const converterService = await app.get<ConverterService>(ConverterService);
@@ -20,7 +20,9 @@ async function bootstrap() {
     await botService.text(ctx);
   });
 
-  await bot.launch();
+  await app.listen(configService.get('PORT') || 3000, async () => {
+    await bot.launch();
+  });
 }
 
 bootstrap();
