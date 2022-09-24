@@ -33,6 +33,11 @@ export class CostsService {
           count: { $sum: '$price' },
         },
       },
+      {
+        $sort: {
+          count: -1,
+        },
+      },
     ]);
   }
 }

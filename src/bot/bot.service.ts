@@ -24,21 +24,27 @@ export class BotService {
 
     let allCosts = 0;
     for (const [index, item] of result.entries()) {
+      allCosts += item.count * 1000;
+    }
+
+    for (const [index, item] of result.entries()) {
       const idr = item.count * 1000;
 
       reply += `${index + 1}. ${this.capitalizeFirstLetter(
         item._id,
       )}: ${this.converterService.printIDR(
         idr,
-      )} IDR/ ${this.converterService.idr2usd(
+      )} IDR / ${this.converterService.idr2usd(
         idr,
-      )} USD / ${this.converterService.idr2uah(idr)} грн. \n`;
-      allCosts += idr;
+      )} USD / ${this.converterService.idr2uah(idr)} грн. / ${this.getPercents(
+        allCosts,
+        idr,
+      )} \n`;
     }
 
     reply += `\n Всього витрачено: ${this.converterService.printIDR(
       allCosts,
-    )} IDR/ ${this.converterService.idr2usd(
+    )} IDR / ${this.converterService.idr2usd(
       allCosts,
     )} USD / ${this.converterService.idr2uah(allCosts)} грн.`;
     ctx.reply(reply);
@@ -46,5 +52,9 @@ export class BotService {
 
   private capitalizeFirstLetter(string: string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  private getPercents(allCosts, price): string {
+    return ((price / allCosts) * 100).toFixed(2) + '%';
   }
 }
