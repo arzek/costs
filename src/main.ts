@@ -7,7 +7,9 @@ import { BotService } from './bot/bot.service';
 import { ConverterService } from './currency/converter.service';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {
+    cors: false,
+  });
   const configService = await app.get<ConfigService>(ConfigService);
   const botService = await app.get<BotService>(BotService);
   const converterService = await app.get<ConverterService>(ConverterService);
