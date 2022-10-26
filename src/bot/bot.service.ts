@@ -47,6 +47,9 @@ export class BotService {
     )} IDR / ${this.converterService.idr2usd(
       allCosts,
     )} USD / ${this.converterService.idr2uah(allCosts)} грн.`;
+    
+    reply += `\n Графік - https://astonishing-chimera-6de95d.netlify.app`;
+    
     ctx.reply(reply);
   }
 
