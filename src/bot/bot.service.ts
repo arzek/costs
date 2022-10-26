@@ -46,9 +46,9 @@ export class BotService {
       allCosts,
     )} IDR / ${this.converterService.idr2usd(
       allCosts,
-    )} USD / ${this.converterService.idr2uah(allCosts)} грн.`;
+    )} USD / ${this.converterService.idr2uah(allCosts)} грн.\n`;
     
-    reply += `\n Графік - https://astonishing-chimera-6de95d.netlify.app`;
+    reply += `\n Графік - https://loquacious-cobbler-a12ef7.netlify.app/`;
     
     ctx.reply(reply);
   }
