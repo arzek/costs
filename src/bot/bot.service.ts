@@ -20,7 +20,7 @@ export class BotService {
 
     const result = await this.costsService.getStatistics();
 
-    let reply = 'Успішно додано! Статистика за місяць: \n\n';
+    let reply = 'Added successfully! Statistics for the month: \n\n';
 
     let allCosts = 0;
     for (const [index, item] of result.entries()) {
@@ -36,17 +36,17 @@ export class BotService {
         idr,
       )} IDR / ${this.converterService.idr2usd(
         idr,
-      )} USD / ${this.converterService.idr2uah(idr)} грн. / ${this.getPercents(
+      )} USD / ${this.converterService.idr2uah(idr)} UAH / ${this.getPercents(
         allCosts,
         idr,
       )} \n`;
     }
 
-    reply += `\n Всього витрачено: ${this.converterService.printIDR(
+    reply += `\n Total spent: ${this.converterService.printIDR(
       allCosts,
     )} IDR / ${this.converterService.idr2usd(
       allCosts,
-    )} USD / ${this.converterService.idr2uah(allCosts)} грн.`;
+    )} USD / ${this.converterService.idr2uah(allCosts)} UAH`;
     ctx.reply(reply);
   }
 
