@@ -16,11 +16,7 @@ export class BotService {
       return;
     }
 
-    if (!group) {
-      return;
-    }
-
-    if (group === '') {
+    if (!this.isEmoji(group)) {
       return;
     }
 
@@ -71,5 +67,10 @@ export class BotService {
 
   private getPercents(allCosts, price): string {
     return ((price / allCosts) * 100).toFixed(2) + '%';
+  }
+
+  private isEmoji(str: string): boolean {
+    const emojiRegex = /[\p{Emoji}]/gu;
+    return emojiRegex.test(str);
   }
 }
