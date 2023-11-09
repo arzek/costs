@@ -46,9 +46,9 @@ export class BotService {
       allCosts,
     )} IDR / ${this.converterService.idr2usd(
       allCosts,
-    )} USD / ${this.converterService.idr2uah(allCosts)} грн.\n`;
+    )} USD / ${this.converterService.idr2uah(allCosts)} UAH \n`;
 
-    reply += `\n Графік - https://loquacious-cobbler-a12ef7.netlify.app/`;
+    reply += `\n Chart - https://loquacious-cobbler-a12ef7.netlify.app/`;
 
     ctx.reply(reply);
   }
