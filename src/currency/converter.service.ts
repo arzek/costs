@@ -31,6 +31,6 @@ export class ConverterService {
   }
 
   printIDR(idr: number): string {
-    return idr / 1000 + 'k';
+    return (idr / 1000).toLocaleString() + 'k';
   }
 }
