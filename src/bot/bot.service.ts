@@ -12,6 +12,18 @@ export class BotService {
   async text(ctx) {
     const [price, group] = ctx.message.text.split(' ');
 
+    if (isNaN(price)) {
+      return;
+    }
+
+    if (!group) {
+      return;
+    }
+
+    if (group === '') {
+      return;
+    }
+
     await this.costsService.add(
       Number(price),
       group,
