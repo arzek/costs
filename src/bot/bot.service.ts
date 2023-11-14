@@ -22,7 +22,7 @@ export class BotService {
 
     await this.costsService.add(
       Number(price),
-      group,
+      group.trim(),
       new Date(ctx.message.date * 1000),
     );
 
