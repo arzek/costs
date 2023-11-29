@@ -61,9 +61,9 @@ export class BotService {
       )} \n`;
     }
 
-    reply += `\n Total spent: **${this.converterService.printIDR(
+    reply += `\n Total spent: <b>${this.converterService.printIDR(
       allCosts,
-    )}** IDR | **${this.converterService.idr2usd(allCosts)}** USD\n`;
+    )}</b> IDR | <b>${this.converterService.idr2usd(allCosts)}</b> USD\n`;
 
     reply += `\n Chart - https://loquacious-cobbler-a12ef7.netlify.app/`;
 
@@ -81,21 +81,5 @@ export class BotService {
   private isEmoji(str: string): boolean {
     const emojiRegex = /[\p{Emoji}]/gu;
     return emojiRegex.test(str);
-  }
-
-  private putFreeSpace(max: number, currect: number): string {
-    const count = max - currect;
-
-    if (!count) {
-      return '';
-    }
-
-    let space = '';
-
-    for (let i = 0; i <= count; i++) {
-      space += ' ';
-    }
-
-    return space;
   }
 }
