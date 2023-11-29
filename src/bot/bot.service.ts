@@ -49,9 +49,7 @@ export class BotService {
         usdLength = this.converterService.idr2usd(idr).length;
       }
 
-      reply += `${
-        index + 1 <= 9 ? '0' + (index + 1) : index + 1
-      }. ${this.capitalizeFirstLetter(
+      reply += `${index + 1}. ${this.capitalizeFirstLetter(
         item._id,
       )}: ${this.converterService.printIDR(
         idr,
@@ -63,20 +61,11 @@ export class BotService {
 
     reply += `\n Total spent: <b>${this.converterService.printIDR(
       allCosts,
-    )}</b> IDR | <b>${this.converterService.idr2usd(allCosts)}</b> USD\n`;
+    )} IDR | ${this.converterService.idr2usd(allCosts)}</b> USD\n`;
 
     reply += `\n Chart - https://loquacious-cobbler-a12ef7.netlify.app/`;
 
-    ctx.reply(
-      '<pre>\n' +
-        '| Tables   |      Are      |  Cool |\n' +
-        '|----------|:-------------:|------:|\n' +
-        '| col 1 is |  left-aligned | $1600 |\n' +
-        '| col 2 is |    centered   |   $12 |\n' +
-        '| col 3 is | right-aligned |    $1 |\n' +
-        '</pre>',
-      { parse_mode: 'HTML' },
-    );
+    ctx.reply(reply, { parse_mode: 'HTML' });
   }
 
   private capitalizeFirstLetter(string: string) {
