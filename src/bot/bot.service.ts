@@ -20,11 +20,11 @@ export class BotService {
       return;
     }
 
-    // await this.costsService.add(
-    //   Number(price),
-    //   group.trim(),
-    //   new Date(ctx.message.date * 1000),
-    // );
+    await this.costsService.add(
+      Number(price),
+      group.trim(),
+      new Date(ctx.message.date * 1000),
+    );
 
     const result = await this.costsService.getStatistics();
 
