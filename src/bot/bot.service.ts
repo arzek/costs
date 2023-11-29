@@ -30,7 +30,8 @@ export class BotService {
       '```\n' +
         '| id  | Group  | IDR  | USD  | UAH  | %  |\n' +
         '|---|---|---|---|---|\n' +
-        '| 1.  |  🔄 | 11,430k  | 742.95 USD  | 26887.36 UAH  | 32.47%  |',
+        '| 1.  |  🔄 | 11,430k  | 742.95 USD  | 26887.36 UAH  | 32.47%  |' +
+        '```',
     );
 
     // const result = await this.costsService.getStatistics();
