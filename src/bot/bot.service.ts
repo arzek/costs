@@ -55,7 +55,7 @@ export class BotService {
       }
 
       reply += `${
-        index + 1 >= 9 ? '0' + (index + 1) : index + 1
+        index + 1 <= 9 ? '0' + (index + 1) : index + 1
       }. ${this.capitalizeFirstLetter(
         item._id,
       )}: ${this.converterService.printIDR(
