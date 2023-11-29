@@ -68,11 +68,11 @@ export class BotService {
       )} \n`;
     }
 
-    reply += `\n Total spent: ${this.converterService.printIDR(
+    reply += `\n Total spent: **${this.converterService.printIDR(
       allCosts,
-    )} IDR / ${this.converterService.idr2usd(
+    )} IDR** | **${this.converterService.idr2usd(
       allCosts,
-    )} USD / ${this.converterService.idr2uah(allCosts)} UAH \n`;
+    )}** USD | **${this.converterService.idr2uah(allCosts)}** UAH \n`;
 
     reply += `\n Chart - https://loquacious-cobbler-a12ef7.netlify.app/`;
 
