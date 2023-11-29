@@ -37,7 +37,6 @@ export class BotService {
 
     let idrLength = 0;
     let usdLength = 0;
-    let uahLength = 0;
 
     for (const [index, item] of result.entries()) {
       const idr = item.count * 1000;
@@ -50,20 +49,17 @@ export class BotService {
         usdLength = this.converterService.idr2usd(idr).length;
       }
 
-      if (!uahLength) {
-        uahLength = this.converterService.idr2uah(idr).length;
-      }
-
       reply += `${
         index + 1 <= 9 ? '0' + (index + 1) : index + 1
       }. ${this.capitalizeFirstLetter(
         item._id,
-      )}: ${this.converterService.printIDR(
-        idr,
-      )} IDR | ${this.converterService.idr2usd(idr)} USD | ${this.getPercents(
-        allCosts,
-        idr,
-      )} \n`;
+      )}: ${this.converterService.printIDR(idr)} IDR${this.putFreeSpace(
+        idrLength,
+        this.converterService.printIDR(idr).length,
+      )} | ${this.converterService.idr2usd(idr)} USD${this.putFreeSpace(
+        usdLength,
+        this.converterService.idr2usd(idr).length,
+      )} | ${this.getPercents(allCosts, idr)} \n`;
     }
 
     reply += `\n Total spent: **${this.converterService.printIDR(
@@ -86,5 +82,15 @@ export class BotService {
   private isEmoji(str: string): boolean {
     const emojiRegex = /[\p{Emoji}]/gu;
     return emojiRegex.test(str);
+  }
+
+  private putFreeSpace(max: number, currect: number): string {
+    const count = max - currect;
+
+    if (!count) {
+      return '';
+    }
+
+    return new Array(count).map(() => ' ').join();
   }
 }
