@@ -64,7 +64,7 @@ export class BotService {
 
     reply += `\n Total spent: **${this.converterService.printIDR(
       allCosts,
-    )} IDR** | **${this.converterService.idr2usd(allCosts)}\n`;
+    )}** IDR | **${this.converterService.idr2usd(allCosts)}** USD\n`;
 
     reply += `\n Chart - https://loquacious-cobbler-a12ef7.netlify.app/`;
 
