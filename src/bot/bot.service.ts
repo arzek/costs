@@ -28,7 +28,7 @@ export class BotService {
 
     const result = await this.costsService.getStatistics();
 
-    let reply = 'Added successfully. Statistics for the month: \n\n';
+    let reply = 'Added successfully | Statistics for the month: \n\n';
 
     let allCosts = 0;
     for (const [index, item] of result.entries()) {
@@ -65,7 +65,7 @@ export class BotService {
       allCosts,
     )}** IDR | **${this.converterService.idr2usd(allCosts)}** USD\n`;
 
-    reply += `\n Chart - https://loquacious-cobbler-a12ef7.netlify.app/`;
+    // reply += `\n Chart - https://loquacious-cobbler-a12ef7.netlify.app/`;
 
     ctx.reply(reply, { parse_mode: 'MarkdownV2' });
   }
