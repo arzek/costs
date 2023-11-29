@@ -26,13 +26,12 @@ export class BotService {
     //   new Date(ctx.message.date * 1000),
     // );
 
-    ctx.reply(`
-			Tables   |      Are      |  Cool
-			---------|:-------------:|------
-			col 1 is |  left-aligned | $1600
-			col 2 is |    centered   |   $12
-			col 3 is | right-aligned |    $1 
-		`);
+    ctx.reply(
+      '```\n' +
+        '| id  | Group  | IDR  | USD  | UAH  | %  |\n' +
+        '|---|---|---|---|---|\n' +
+        '| 1.  |  🔄 | 11,430k  | 742.95 USD  | 26887.36 UAH  | 32.47%  |',
+    );
 
     // const result = await this.costsService.getStatistics();
     //
