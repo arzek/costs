@@ -28,10 +28,12 @@ export class BotService {
 
     ctx.reply(
       '```\n' +
+        '\n' +
         '| id  | Group  | IDR  | USD  | UAH  | %  |\n' +
         '|---|---|---|---|---|\n' +
         '| 1.  |  🔄 | 11,430k  | 742.95 USD  | 26887.36 UAH  | 32.47%  |\n' +
-        '```',
+        '\n',
+      '```',
     );
 
     // const result = await this.costsService.getStatistics();
