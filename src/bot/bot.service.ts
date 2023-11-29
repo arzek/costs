@@ -35,10 +35,28 @@ export class BotService {
       allCosts += item.count * 1000;
     }
 
+    let idrLength = 0;
+    let usdLength = 0;
+    let uahLength = 0;
+
     for (const [index, item] of result.entries()) {
       const idr = item.count * 1000;
 
-      reply += `${index + 1}. ${this.capitalizeFirstLetter(
+      if (!idrLength) {
+        idrLength = this.converterService.printIDR(idr).length;
+      }
+
+      if (!usdLength) {
+        usdLength = this.converterService.idr2usd(idr).length;
+      }
+
+      if (!uahLength) {
+        uahLength = this.converterService.idr2uah(idr).length;
+      }
+
+      reply += `${
+        index + 1 >= 9 ? '0' + (index + 1) : index + 1
+      }. ${this.capitalizeFirstLetter(
         item._id,
       )}: ${this.converterService.printIDR(
         idr,
