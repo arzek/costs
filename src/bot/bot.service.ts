@@ -28,7 +28,7 @@ export class BotService {
 
     const result = await this.costsService.getStatistics();
 
-    let reply = 'Added successfully! Statistics for the month: \n\n';
+    let reply = 'Added successfully. Statistics for the month: \n\n';
 
     let allCosts = 0;
     for (const [index, item] of result.entries()) {
