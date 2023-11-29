@@ -26,14 +26,18 @@ export class BotService {
     //   new Date(ctx.message.date * 1000),
     // );
 
-    ctx.reply(`
-		\`\`\`| Symbol | Price | Change |
-|--------|-------|--------|
-| ABC    | 20.85 |  1.626 |
-| DEF    | 78.95 |  0.099 |
-| GHI    | 23.45 |  0.192 |
-| JKL    | 98.85 |  0.292 |\`\`\`
-		`);
+    ctx.reply(
+      `
+					<pre>
+			| Tables   |      Are      |  Cool |
+			|----------|:-------------:|------:|
+			| col 1 is |  left-aligned | $1600 |
+			| col 2 is |    centered   |   $12 |
+			| col 3 is | right-aligned |    $1 |
+			</pre>
+		`,
+      { parseMode: 'html' },
+    );
 
     // const result = await this.costsService.getStatistics();
     //
