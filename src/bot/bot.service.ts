@@ -60,9 +60,7 @@ export class BotService {
         item._id,
       )}: ${this.converterService.printIDR(
         idr,
-      )} IDR | ${this.converterService.idr2usd(
-        idr,
-      )} USD | ${this.converterService.idr2uah(idr)} UAH | ${this.getPercents(
+      )} IDR | ${this.converterService.idr2usd(idr)} USD | ${this.getPercents(
         allCosts,
         idr,
       )} \n`;
@@ -70,9 +68,7 @@ export class BotService {
 
     reply += `\n Total spent: **${this.converterService.printIDR(
       allCosts,
-    )} IDR** | **${this.converterService.idr2usd(
-      allCosts,
-    )}** USD | **${this.converterService.idr2uah(allCosts)}** UAH \n`;
+    )} IDR** | **${this.converterService.idr2usd(allCosts)}\n`;
 
     reply += `\n Chart - https://loquacious-cobbler-a12ef7.netlify.app/`;
 
