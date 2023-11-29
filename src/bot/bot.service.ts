@@ -35,19 +35,8 @@ export class BotService {
       allCosts += item.count * 1000;
     }
 
-    let idrLength = 0;
-    let usdLength = 0;
-
     for (const [index, item] of result.entries()) {
       const idr = item.count * 1000;
-
-      if (!idrLength) {
-        idrLength = this.converterService.printIDR(idr).length;
-      }
-
-      if (!usdLength) {
-        usdLength = this.converterService.idr2usd(idr).length;
-      }
 
       reply += `${index + 1}. ${this.capitalizeFirstLetter(
         item._id,
@@ -73,7 +62,10 @@ export class BotService {
   }
 
   private getPercents(allCosts, price): string {
-    return ((price / allCosts) * 100).toFixed(2) + '%';
+    const amount = (price / allCosts) * 100;
+
+    const percents = amount < 10 ? amount.toFixed(2) : amount.toFixed(0);
+    return percents + '%';
   }
 
   private isEmoji(str: string): boolean {
