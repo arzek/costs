@@ -65,9 +65,9 @@ export class BotService {
       allCosts,
     )}** IDR | **${this.converterService.idr2usd(allCosts)}** USD\n`;
 
-    // reply += `\n Chart - https://loquacious-cobbler-a12ef7.netlify.app/`;
+    reply += `\n Chart - https://loquacious-cobbler-a12ef7.netlify.app/`;
 
-    ctx.reply(reply, { parse_mode: 'MarkdownV2' });
+    ctx.reply(reply, { parse_mode: 'HTML' });
   }
 
   private capitalizeFirstLetter(string: string) {
