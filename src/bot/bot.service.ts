@@ -27,7 +27,7 @@ export class BotService {
     // );
 
     ctx.reply(
-      '```\n' +
+      '```' +
         '\n' +
         '| id  | Group  | IDR  | USD  | UAH  | %  |\n' +
         '|---|---|---|---|---|\n' +
