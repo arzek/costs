@@ -91,6 +91,12 @@ export class BotService {
       return '';
     }
 
-    return new Array(count).map(() => ' ').join();
+    let space = '';
+
+    for (let i = 0; i <= count; i++) {
+      space += ' ';
+    }
+
+    return space;
   }
 }
