@@ -67,7 +67,16 @@ export class BotService {
 
     reply += `\n Chart - https://loquacious-cobbler-a12ef7.netlify.app/`;
 
-    ctx.reply(reply, { parse_mode: 'HTML' });
+    ctx.reply(
+      '<pre>\n' +
+        '| Tables   |      Are      |  Cool |\n' +
+        '|----------|:-------------:|------:|\n' +
+        '| col 1 is |  left-aligned | $1600 |\n' +
+        '| col 2 is |    centered   |   $12 |\n' +
+        '| col 3 is | right-aligned |    $1 |\n' +
+        '</pre>',
+      { parse_mode: 'HTML' },
+    );
   }
 
   private capitalizeFirstLetter(string: string) {
