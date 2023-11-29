@@ -67,7 +67,7 @@ export class BotService {
 
     reply += `\n Chart - https://loquacious-cobbler-a12ef7.netlify.app/`;
 
-    ctx.reply(reply);
+    ctx.reply(reply, { parse_mode: 'MarkdownV2' });
   }
 
   private capitalizeFirstLetter(string: string) {
