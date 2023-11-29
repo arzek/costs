@@ -29,7 +29,9 @@ export class ConverterService {
   }
 
   idr2uah(idr: number): string {
-    return (idr * this.idr2usdRate * this.usd2uahRate).toFixed(2);
+    return (
+      ((idr * this.idr2usdRate * this.usd2uahRate) / 1000).toFixed(0) + 'k'
+    );
   }
 
   printIDR(idr: number): string {
