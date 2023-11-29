@@ -20,45 +20,55 @@ export class BotService {
       return;
     }
 
-    await this.costsService.add(
-      Number(price),
-      group.trim(),
-      new Date(ctx.message.date * 1000),
-    );
+    // await this.costsService.add(
+    //   Number(price),
+    //   group.trim(),
+    //   new Date(ctx.message.date * 1000),
+    // );
 
-    const result = await this.costsService.getStatistics();
+    ctx.reply(`
+					<pre>
+			| Tables   |      Are      |  Cool |
+			|----------|:-------------:|------:|
+			| col 1 is |  left-aligned | $1600 |
+			| col 2 is |    centered   |   $12 |
+			| col 3 is | right-aligned |    $1 |
+			</pre>
+		`);
 
-    let reply = 'Added successfully! Statistics for the month: \n\n';
-
-    let allCosts = 0;
-    for (const [index, item] of result.entries()) {
-      allCosts += item.count * 1000;
-    }
-
-    for (const [index, item] of result.entries()) {
-      const idr = item.count * 1000;
-
-      reply += `${index + 1}. ${this.capitalizeFirstLetter(
-        item._id,
-      )}: ${this.converterService.printIDR(
-        idr,
-      )} IDR / ${this.converterService.idr2usd(
-        idr,
-      )} USD / ${this.converterService.idr2uah(idr)} UAH / ${this.getPercents(
-        allCosts,
-        idr,
-      )} \n`;
-    }
-
-    reply += `\n Total spent: ${this.converterService.printIDR(
-      allCosts,
-    )} IDR / ${this.converterService.idr2usd(
-      allCosts,
-    )} USD / ${this.converterService.idr2uah(allCosts)} UAH \n`;
-
-    reply += `\n Chart - https://loquacious-cobbler-a12ef7.netlify.app/`;
-
-    ctx.reply(reply);
+    // const result = await this.costsService.getStatistics();
+    //
+    // let reply = 'Added successfully! Statistics for the month: \n\n';
+    //
+    // let allCosts = 0;
+    // for (const [index, item] of result.entries()) {
+    //   allCosts += item.count * 1000;
+    // }
+    //
+    // for (const [index, item] of result.entries()) {
+    //   const idr = item.count * 1000;
+    //
+    //   reply += `${index + 1}. ${this.capitalizeFirstLetter(
+    //     item._id,
+    //   )}: ${this.converterService.printIDR(
+    //     idr,
+    //   )} IDR / ${this.converterService.idr2usd(
+    //     idr,
+    //   )} USD / ${this.converterService.idr2uah(idr)} UAH / ${this.getPercents(
+    //     allCosts,
+    //     idr,
+    //   )} \n`;
+    // }
+    //
+    // reply += `\n Total spent: ${this.converterService.printIDR(
+    //   allCosts,
+    // )} IDR / ${this.converterService.idr2usd(
+    //   allCosts,
+    // )} USD / ${this.converterService.idr2uah(allCosts)} UAH \n`;
+    //
+    // reply += `\n Chart - https://loquacious-cobbler-a12ef7.netlify.app/`;
+    //
+    // ctx.reply(reply);
   }
 
   private capitalizeFirstLetter(string: string) {
