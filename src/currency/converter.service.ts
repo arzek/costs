@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import * as CC from 'currency-converter-lt';
+import axios from 'axios';
 
 @Injectable()
 export class ConverterService {
@@ -7,19 +8,12 @@ export class ConverterService {
   private usd2uahRate = 0;
 
   async setRate(): Promise<void> {
-    let currencyConverter = new CC({
-      from: 'IDR',
-      to: 'USD',
-      amount: 1,
-    });
-    this.idr2usdRate = await currencyConverter.convert();
+    const response = await axios.get(
+      'https://api.exchangerate-api.com/v4/latest/USD',
+    );
 
-    currencyConverter = new CC({
-      from: 'USD',
-      to: 'UAH',
-      amount: 1,
-    });
-    this.usd2uahRate = await currencyConverter.convert();
+    this.idr2usdRate = response.data.rates.IDR;
+    this.usd2uahRate = response.data.rates.UAH;
   }
 
   idr2usd(idr: number): string {
