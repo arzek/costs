@@ -8,12 +8,15 @@ export class ConverterService {
   private usd2uahRate = 0;
 
   async setRate(): Promise<void> {
-    const response = await axios.get(
+    const response1 = await axios.get(
+      'https://api.exchangerate-api.com/v4/latest/IDR',
+    );
+    const response2 = await axios.get(
       'https://api.exchangerate-api.com/v4/latest/USD',
     );
 
-    this.idr2usdRate = response.data.rates.IDR;
-    this.usd2uahRate = response.data.rates.UAH;
+    this.idr2usdRate = response1.data.rates.USD;
+    this.usd2uahRate = response2.data.rates.UAH;
   }
 
   idr2usd(idr: number): string {
